@@ -1,0 +1,27 @@
+baseurl = "http://jyu213.github.io/"
+title = "见见 - 前端小记"
+theme = "beg"
+hasCJKLanguage = true
+
+[params]
+    Author = "见见"
+    DateForm = "2006-01-02"
+    GoogleAnalyticsUserID = "UA-41493088-2"
+    ShowRelatedPost = false
+    Duoshuo = "j4evee"
+    SyntaxHighlightTheme = "solarized_dark.min.css"
+    CopyrightHTML = ""
+
+[Indexes]
+    tag = "tags"
+
+[permalinks]
+    post = "/blog/:year/:month/:day/:slug/"
+
+
+# [[menu.main]]
+#     name = "section1"
+#     url = "/blog/"
+# [[menu.main]]
+#     name = "section2"
+#     url = "/blog2/"
