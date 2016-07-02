@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>自动化 on 见见 - 前端小记</title>
+    <link>http://jyu213.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</link>
+    <description>Recent content in 自动化 on 见见 - 前端小记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 14 Jan 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://jyu213.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Rollup 试炼之路</title>
+      <link>http://jyu213.github.io/blog/2016/01/14/rollup-%E8%AF%95%E7%82%BC%E4%B9%8B%E8%B7%AF/</link>
+      <pubDate>Thu, 14 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://jyu213.github.io/blog/2016/01/14/rollup-%E8%AF%95%E7%82%BC%E4%B9%8B%E8%B7%AF/</guid>
+      <description>
+
+&lt;p&gt;最近看到挺多次 Rollup 这个词，再也架不住好奇，简单的学习实践了一下。&lt;a href=&#34;https://github.com/jyu213/rollup-demo&#34;&gt;完整项目库地址请戳&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;PS: ES6 对应 ES2015，请忽略这些细节。&lt;/p&gt;
+
+&lt;h3 id=&#34;什么是-rollup:94a5bc0f1c88307be9ce656c563df6ba&#34;&gt;什么是 Rollup&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/rollup/rollup&#34;&gt;Rollup Github 地址&lt;/a&gt;。根据官网的解释，Rollup 是下一代 ES6 模块化工具。ES6 之后，模块化的写法将更加的趋势化，我们会将以前的文件切割成多个的细小模块。那么如何来高效的组织管理这些文件，又有了很多不同的方案。现有的模块化打包已经有如
+&lt;code&gt;Browserify&lt;/code&gt; 和 &lt;code&gt;Webpack&lt;/code&gt; ，那为啥还需要一个新的呢？&lt;/p&gt;
+
+&lt;h3 id=&#34;优势在哪:94a5bc0f1c88307be9ce656c563df6ba&#34;&gt;优势在哪&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以生成 AMD，CMD，UMD 甚至 ES6 模块文件。&lt;/li&gt;
+&lt;li&gt;Tree-shaking&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;tree-shaking&lt;/code&gt;(有知道中文怎么翻译的同学欢迎留言告知一下)，大致意思就是打包的时候会移除未使用到的 ES6 &lt;code&gt;exports&lt;/code&gt;模块。想要更深入的了解 &lt;code&gt;tree-shaking&lt;/code&gt; 的话，可以看下博士的这篇文章&lt;a href=&#34;http://www.2ality.com/2015/12/webpack-tree-shaking.html&#34;&gt;Tree-shaking with webpack 2 and Babel 6&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;话题转回来，Rollup 正是使用了 ES6 的模块特性，所以会使打包后的文件体积更小。如果是 CommonJS 的则需要先通过插件转为 ES6 后处理。&lt;/p&gt;
+
+&lt;p&gt;对了，值得多说一句的是，Rollup 打包后的代码没有 &lt;code&gt;require&lt;/code&gt;，&lt;code&gt;import&lt;/code&gt;的，而是直接插入到文件中。&lt;/p&gt;
+
+&lt;h3 id=&#34;如何引用:94a5bc0f1c88307be9ce656c563df6ba&#34;&gt;如何引用&lt;/h3&gt;
+
+&lt;p&gt;Rollup 支持 CLI 和 JS API 方式，同时提供了一些插件如解决压缩 babel 转换等问题。(PS: 此处讲解采用 API 的方式)&lt;/p&gt;
+
+&lt;p&gt;首先在项目根目录创建 &lt;code&gt;rollup.js&lt;/code&gt; 文件，安装 &lt;code&gt;npm&lt;/code&gt; 的相关依赖&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var rollup = require(&#39;rollup&#39;);
+var babel = require(&#39;rollup-plugin-babel&#39;);
+var uglify = require(&#39;rollup-plugin-uglify&#39;);
+
+rollup.rollup({
+    entry: &#39;src/index.js&#39;,
+    plugins: [
+        babel({
+            exclude: &#39;node_modules/**&#39;,
+            presets: [ &amp;quot;es2015-rollup&amp;quot; ]
+        }),
+        uglify()
+    ]
+}).then(function(bundle) {
+    bundle.write({
+        // output format - &#39;amd&#39;, &#39;cjs&#39;, &#39;es6&#39;, &#39;iife&#39;, &#39;umd&#39;
+        format: &#39;umd&#39;,
+        moduleName: &#39;dqSystem&#39;,
+        sourceMap: true,
+        dest: &#39;dqSystem.js&#39;
+    });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;rollup&lt;/code&gt; 方法可以配置一些入口文件，依赖插件等，返回的是 &lt;code&gt;bundle&lt;/code&gt; 的 &lt;code&gt;Promise&lt;/code&gt; 方法。&lt;code&gt;bundle&lt;/code&gt; 方法中可以配置文件相关参数，同时也可以生成多份版本文件。具体的 API &lt;a href=&#34;https://github.com/rollup/rollup/wiki/JavaScript-API&#34;&gt;参考官网&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;使用 &lt;code&gt;node rollup.js&lt;/code&gt; 执行打包。另外 Rollup 好像还不支持 &lt;code&gt;watch&lt;/code&gt; 的配置，我采用了 npm-watch 的方式跳过了。&lt;/p&gt;
+
+&lt;h3 id=&#34;采过的坑:94a5bc0f1c88307be9ce656c563df6ba&#34;&gt;采过的坑&lt;/h3&gt;
+
+&lt;p&gt;试用时间不长，且内容比较简单，可能没碰到一些奇怪的点&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Rollup.js 中可以 &lt;code&gt;catch&lt;/code&gt; 下 &lt;code&gt;error&lt;/code&gt; 方便调试错误&lt;/li&gt;
+&lt;li&gt;UMD/IIFE 模式中需要&lt;code&gt;moduleName&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Rollup 的模块引用只支持 ES6 Module，其他的需要采用 &lt;code&gt;npm&lt;/code&gt; 和 &lt;code&gt;commonjs&lt;/code&gt; 的插件去解决&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;自己yy下:94a5bc0f1c88307be9ce656c563df6ba&#34;&gt;自己YY下&lt;/h3&gt;
+
+&lt;p&gt;不知道拿 Rollup 和 webpack 相比合不合适。我个人还是挺喜欢 webpack 的打包方式的，关键是功能强大，不过相比，配置也巨复杂。而 Rollup 的配置就简单很多了。实验的项目文件不大，所以没看出来两者在压缩体积上是否有明显的差异。Rollup 的&lt;code&gt;tree-shaking&lt;/code&gt;也将会在 webpack2 中支持。所以好像并没有什么一定非它不可的感觉。&lt;/p&gt;
+
+&lt;p&gt;套用朋友说的一句话，“任何产品的生命周期都得看社区的活跃程度”。从 github 的 fock 人数上，还是持有很大的保留意见的，所有我个人可能会在一些小型或者快速项目中做尝试而已。&lt;/p&gt;
+
+&lt;h3 id=&#34;参考文章:94a5bc0f1c88307be9ce656c563df6ba&#34;&gt;参考文章&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/rollup/rollup&#34;&gt;Rollup Github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.2ality.com/2015/12/webpack-tree-shaking.html&#34;&gt;Tree-shaking with webpack 2 and Babel 6&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

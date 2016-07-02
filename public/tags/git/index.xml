@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on 见见 - 前端小记</title>
+    <link>http://jyu213.github.io/tags/git/</link>
+    <description>Recent content in Git on 见见 - 前端小记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 02 Jul 2016 14:26:44 +0800</lastBuildDate>
+    <atom:link href="http://jyu213.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>挖一挖 submodule</title>
+      <link>http://jyu213.github.io/blog/2016/07/02/%E6%8C%96%E4%B8%80%E6%8C%96-submodule/</link>
+      <pubDate>Sat, 02 Jul 2016 14:26:44 +0800</pubDate>
+      
+      <guid>http://jyu213.github.io/blog/2016/07/02/%E6%8C%96%E4%B8%80%E6%8C%96-submodule/</guid>
+      <description>
+
+&lt;p&gt;在很长的一段时间内，对&lt;code&gt;submodule&lt;/code&gt;的概念含糊不清。特别是 &lt;code&gt;submodule&lt;/code&gt; 和 &lt;code&gt;subtree&lt;/code&gt; 这两个的区别。今天正好有时间来理一理。&lt;/p&gt;
+
+&lt;h3 id=&#34;子模块-submodule:3b642809b94e451e9d37df2cf008e2bb&#34;&gt;子模块（submodule）&lt;/h3&gt;
+
+&lt;p&gt;为了解决项目中的依赖问题。使得更加方便的维护与管理。子模块允许你将一个 Git         仓库作为另外一个 Git 仓库的子目录，从而保持相对独立的提交记录。&lt;/p&gt;
+
+&lt;p&gt;子模块有点类似与一个软链。你记录他们当前确切所处的提交，但是不能记录一个子模块的 &lt;code&gt;master&lt;/code&gt; 或者其它符号的引用。在 &lt;code&gt;git&lt;/code&gt; 的存储信息中，&lt;code&gt;submodule&lt;/code&gt; 的属于 &lt;code&gt;160000&lt;/code&gt; 模式，这在Git中是一个特殊模式，基本意思是你将一个提交记录为一个目录项而不是子目录或者文件。&lt;/p&gt;
+
+&lt;h4 id=&#34;用法:3b642809b94e451e9d37df2cf008e2bb&#34;&gt;用法&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;submodule&lt;/code&gt; 的使用还是挺方便的。&lt;code&gt;.gitmodules&lt;/code&gt; 文件保存着项目 URL 与已经拉取的本地目录之间的映射。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;git submodule add&lt;/code&gt; 来增加新模块，&lt;code&gt;git submodule init&lt;/code&gt; 用于初始化，&lt;code&gt;git submodule update&lt;/code&gt; 用于更新，就是删除的时候不太方便。
+而另外一个更新维护子模块的时候也有些繁琐，也常常会出一些坑。&lt;/p&gt;
+
+&lt;h3 id=&#34;挖坑说明:3b642809b94e451e9d37df2cf008e2bb&#34;&gt;挖坑说明&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;当你 &lt;code&gt;pull master&lt;/code&gt; 之后，如果 &lt;code&gt;submodule&lt;/code&gt; 有变更，都需要记得&lt;code&gt;submodule update&lt;/code&gt;一下，不然又会提交旧的信息回去了。这本质上，都是因为它在主&lt;code&gt;master&lt;/code&gt;上都是已 &lt;code&gt;link&lt;/code&gt; 的方式存在。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;submodule&lt;/code&gt; 的时候也有点费劲的其实。当你进入 &lt;code&gt;submodule&lt;/code&gt; 的目录，其实不会切到任何分支，&lt;code&gt;HEAD&lt;/code&gt; 处于游离的状态，所以在改动之前需要 &lt;code&gt;checkout master&lt;/code&gt;，再来改动。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;subtree:3b642809b94e451e9d37df2cf008e2bb&#34;&gt;subtree&lt;/h3&gt;
+
+&lt;p&gt;上面讲了这个多，其实官方推荐使用 &lt;code&gt;subtree&lt;/code&gt; 来代替 &lt;code&gt;submodule&lt;/code&gt;。两者的区分在于，&lt;code&gt;submodule&lt;/code&gt;是把一个 &lt;code&gt;commit&lt;/code&gt; 嵌入到当前项目的子目录中，只相当于一个 &lt;code&gt;Link&lt;/code&gt;，而 &lt;code&gt;subtree&lt;/code&gt; 是合并子项目到当前项目的子目录中，是一个完整项目的拷贝。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;subtree&lt;/code&gt; 除了命令长一点外，还是有挺多优点的。比如&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;clone 的时候不需要 &lt;code&gt;init&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;没有类似的 &lt;code&gt;.gitmodule&lt;/code&gt; 文件&lt;/li&gt;
+&lt;li&gt;管理上更加方便一些&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;用法-1:3b642809b94e451e9d37df2cf008e2bb&#34;&gt;用法&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;subtree&lt;/code&gt; 的使用相对复杂一些。这个依旧省略了各种操作的说明。具体翻看 API。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;关联：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git remote add -f &amp;lt;子仓库名&amp;gt; &amp;lt;子仓库地址&amp;gt;
+git subtree add --prefix=&amp;lt;子目录名&amp;gt; &amp;lt;子仓库名&amp;gt; &amp;lt;分支&amp;gt; --squash
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;更新&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git fetch &amp;lt;远程仓库名&amp;gt; &amp;lt;分支&amp;gt;
+git subtree pull --prefix=&amp;lt;子目录名&amp;gt; &amp;lt;远程分支&amp;gt; &amp;lt;分支&amp;gt; --squash
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;推送&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git subtree push --prefix=ai ai master
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;参考文献:3b642809b94e451e9d37df2cf008e2bb&#34;&gt;参考文献&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97&#34;&gt;Git 工具 - 子模块&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A0%91%E5%90%88%E5%B9%B6&#34;&gt;Git 工具 - 子树合并&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/31769820/differences-between-git-submodule-and-subtree&#34;&gt;Difference between git submodule and subtree&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://alistra.ghost.io/2014/11/30/git-subtree-a-better-alternative-to-git-submodule/&#34;&gt;git subtree - a better alternative to git submodule&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

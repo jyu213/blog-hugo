@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.15" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans|Marcellus+SC'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://jyu213.github.io//index.xml">
+
+    
+    <title>ES6 - 字符串模板 - 见见 - 前端小记</title>
+    <meta property='og:title' content="ES6 - 字符串模板 - 见见 - 前端小记">
+    <meta property="og:type" content="article">
+    
+
+    <meta property="og:url" content="http://jyu213.github.io/blog/2015/12/14/es6---%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E6%9D%BF/">
+    
+    
+
+  </head>
+
+  <body>
+
+    <header class="site">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://jyu213.github.io/">见见 - 前端小记</a>
+          </div>
+
+          <div id="navbar" class="collapse navbar-collapse">
+            
+          </div>
+
+        </div>
+      </nav>
+    </header>
+
+    <div class="site">
+      <div class="container">
+
+
+
+<div class="single">
+
+  <div class="row">
+    <div class="col-md-8">
+
+      <article class="single" itemscope="itemscope" itemtype="http://schema.org/Article">
+
+        <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="http://jyu213.github.io/"/>
+        <meta itemprop="dateModified" content="2015-12-14T00:00:00&#43;00:00">
+        <meta itemprop="headline" content="ES6 - 字符串模板">
+        <meta itemprop="description" content="ES6 - 字符串模板 写在前面 关于 ES6, 也终于在 2015 年的 7 月 18 号尘埃落定了。虽然说各大浏览器还没有全面的支持，不过这并不妨碍我们一颗想要撸一把的心。在后端">
+        <meta itemprop="url" content="http://jyu213.github.io/blog/2015/12/14/es6---%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E6%9D%BF/">
+        <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+          <meta itemprop="url" content="http://jyu213.github.io/images/default.jpg" />
+          <meta itemprop="width" content="800">
+          <meta itemprop="height" content="800">
+        </div>
+        <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+          <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+            <meta itemprop="url" content="http://jyu213.github.io/images/logo.jpg">
+            <meta itemprop="width" content="100">
+            <meta itemprop="height" content="100">
+          </div>
+          <meta itemprop="name" content="见见 - 前端小记">
+        </div>
+        <div itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <meta itemprop="name" content="见见">
+        </div>
+
+        <header class="article-header">
+          <h1 class="article-title">ES6 - 字符串模板</h1>
+
+          <time itemprop="datePublished" pubdate="pubdate" datetime="2015-12-14T00:00:00&#43;00:00">2015-12-14</time>
+
+          
+            <a href="http://jyu213.github.io/tags/es6" class="tag">es6</a> 
+          
+        </header>
+
+        <div class="article-body" itemprop="articleBody">
+          
+
+<h2 id="es6-字符串模板:806b46e229fc7cf9ebe3737ebb6a0621">ES6 - 字符串模板</h2>
+
+<h3 id="写在前面:806b46e229fc7cf9ebe3737ebb6a0621">写在前面</h3>
+
+<p>关于 ES6, 也终于在 2015 年的 7 月 18 号尘埃落定了。虽然说各大浏览器还没有全面的支持，不过这并不妨碍我们一颗想要撸一把的心。在后端，可以使用 Node.js(0.12+)或 io.js, 前端的话，也可以使用<a href="http://babeljs.io/">Babel</a> 或<a href="https://github.com/google/traceur-compiler#what-is-traceur">Traceur</a> 进行语法预转义成 ES5使用 。</p>
+
+<p>关于该系列（不知道能不能成为一个系列，总是各种懒），会没有规律的挑选一些内容来学习。欢迎大家积极纠错，留言探讨。</p>
+
+<h3 id="模板字符串-template-strings:806b46e229fc7cf9ebe3737ebb6a0621">模板字符串(template strings)</h3>
+
+<p>ES6 中引进的一种新型的字符串字面量语法 - 模板字符串。书面上来解释，模板字符串是一种能在字符串文本中内嵌表示式的字符串字面量。简单来讲，就是增加了变量功能的字符串。</p>
+
+<p>先来看一下以前我们对字符串的使用：</p>
+
+<pre><code>    ```
+    /**
+     * Before ES6 字符串拼接
+     */
+    var name = '丁香医生';
+    var desc = '丁香医生是面向大众的科普性健康类网站';
+    var html = function(name, desc){
+        var tpl = '公司名：' + name + '\n'+
+                '简介：'+ desc;
+        return tpl;
+    }
+    ```
+</code></pre>
+
+<p>而现在：</p>
+
+<pre><code>    ```
+    var html = `公司名：${name}
+        简介：${desc}`;
+    ```
+</code></pre>
+
+<p>很简洁吧。
+引一段 MDN 对于模板字符串的定义：</p>
+
+<pre><code>    模板字符串使用反引号 (` `) 来代替普通字符串中的用双引号和单引号。模板字符串可以包含特定语法(${expression})的占位符。占位符中的表达式和周围的文本会一起传递给一个默认函数，该函数负责将所有的部分连接起来。
+</code></pre>
+
+<p>而占位符<code>${}</code>，可以是任意的 js 表达式（函数或者运算），甚至是另一个模板字符串，会将其计算的结果作为字符串输出。如果模板中需要使用<code>$,{</code>等字符串，则需要进行转义。</p>
+
+<p>看个例子就明白了。</p>
+
+<pre><code>    ```
+    var x = 1;
+    var y = 2;
+    `${ x } + ${ y } = ${ x + y}`  // &quot;1 + 2 = 3&quot;
+    ```
+</code></pre>
+
+<p>不同于普通字符串，模板字符串还可以多行书写，模板字符串中所有的空格，新行，缩进都会原样的输出在生成的字符串中。</p>
+
+<p>而单纯的模板字符串还存在着很多的局限性。如：
+* 不能自动转义特殊的字符串。（这样很容易引起注入攻击）
+* 不能很好的和国际化库配合（即不会格式化特定语言的数字，日期，文字等）
+* 没有内建循环语法，（甚至连条件语句都不支持， 只可以使用模板套构的方法）</p>
+
+<h3 id="标签模板-tagged-template:806b46e229fc7cf9ebe3737ebb6a0621">标签模板(tagged template)</h3>
+
+<p>为此，引出了标签模板的概念。标签模板则是在反引号前面引入一个标签（tag）。该标签是一个函数，用于处于定制化模板字符串后返回值。就拿上面对特殊字符串举例。</p>
+
+<pre><code>    ```
+    /**
+     * HTML 标签转义
+     * @param {Array.&lt;DOMString&gt;} templateData 字符串类型的tokens
+     * @param {...} ..vals 表达式占位符的运算结果tokens
+     *
+     */
+    function SaferHTML(templateData) {
+      var s = templateData[0];
+      for (var i = 1; i &lt; arguments.length; i++) {
+        var arg = String(arguments[i]);
+        // Escape special characters in the substitution.
+        s += arg.replace(/&amp;/g, &quot;&amp;amp;&quot;)
+                .replace(/&lt;/g, &quot;&amp;lt;&quot;)
+                .replace(/&gt;/g, &quot;&amp;gt;&quot;);
+        // Don't escape special characters in the template.
+        s += templateData[i];
+      }
+      return s;
+    }
+    // 调用
+    var html = SaferHTML`&lt;p&gt;这是关于字符串模板的介绍&lt;/p&gt;`;
+    ```
+</code></pre>
+
+<p>标签函数会接收多个参数。
+* 第一个参数是包含了字符串字面量(即那些没有变量替换的值)的数组
+* 后面的参数是已经替换后的变量值</p>
+
+<p>改一下例子1</p>
+
+<pre><code>    ```
+    var name = '丁香医生';
+    var desc = '丁香医生是面向大众的科普性健康类网站';
+    tag`公司名：${name}简介：${desc}`
+    ```
+</code></pre>
+
+<p>tag 的参数则分别为 [&lsquo;公司名：&rsquo;,&lsquo;简介：&rsquo;], &lsquo;丁香医生&rsquo;, &lsquo;丁香医生是面向大众的科普性健康类网站&rsquo;。</p>
+
+<p>有了此类方法，就大大的增加了控制的权利。如上面说的国际化库甚至循环语句。</p>
+
+<h3 id="浏览器兼容性:806b46e229fc7cf9ebe3737ebb6a0621">浏览器兼容性</h3>
+
+<ul>
+<li>服务器端， io.js 支持</li>
+<li>浏览器端， FF34+ , chrome 41+</li>
+<li>移动端 IOS 8, Android 4.4</li>
+<li>IE Tech Preview</li>
+</ul>
+
+<h3 id="扩展阅读:806b46e229fc7cf9ebe3737ebb6a0621">扩展阅读</h3>
+
+<ul>
+<li><a href="http://es6.ruanyifeng.com/#docs/string">ECMAScript 6 入门</a></li>
+<li><a href="https://developers.google.com/web/updates/2015/01/ES6-Template-Strings">Getting Literal With ES6 Template Strings</a></li>
+<li><a href="http://www.2ality.com/2015/01/template-strings-html.html">HTML templating with ES6 template strings</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings">模板字符串 - MDN</a></li>
+<li><a href="http://segmentfault.com/a/1190000002950341">ES6 Features系列：Template Strings &amp; Tagged Template Strings</a></li>
+</ul>
+
+        </div>
+
+
+        <aside>
+          
+<div class="ds-thread" data-thread-key="http://jyu213.github.io/blog/2015/12/14/es6---%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E6%9D%BF/" data-title="ES6 - 字符串模板" data-url="http://jyu213.github.io/blog/2015/12/14/es6---%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E6%9D%BF/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"j4evee"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+        </aside>
+
+      </article>
+
+    </div>
+    <div class="col-md-4">
+      
+<aside class="site">
+
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">tag</h2>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://jyu213.github.io/tags/mobile" class="list-group-item">mobile</a>
+      
+      <a href="http://jyu213.github.io/tags/doc" class="list-group-item">doc</a>
+      
+      <a href="http://jyu213.github.io/tags/es6" class="list-group-item">es6</a>
+      
+      <a href="http://jyu213.github.io/tags/git" class="list-group-item">git</a>
+      
+      <a href="http://jyu213.github.io/tags/css" class="list-group-item">css</a>
+      
+      <a href="http://jyu213.github.io/tags/js" class="list-group-item">js</a>
+      
+      <a href="http://jyu213.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96" class="list-group-item">自动化</a>
+      
+      <a href="http://jyu213.github.io/tags/html5" class="list-group-item">html5</a>
+      
+    </div>
+  </div>
+  
+
+</aside>
+
+
+    </div>
+  </div>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site">
+      <div class="container">
+        <p>&copy; 2016 见见</p>
+        <p>Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>,</p>
+        <p>Theme <a href="https://github.com/dim0627/hugo_theme_robust" target="_blank">Robust</a> designed by <a href="http://yet.unresolved.xyz" target="_blank">Daisuke Tsuji</a></p>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-41493088-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+  </body>
+</html>
+
