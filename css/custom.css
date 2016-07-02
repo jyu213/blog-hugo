@@ -1,0 +1,19 @@
+/*
+ * custom css
+ */
+.article.li .title{
+    margin-bottom: .2rem;
+}
+.article.li .date{
+    margin-bottom: .5rem;
+}
+.article.li .text,
+.article.li .text a{
+    margin-top: .5rem;
+}
+
+article.single .article-header time{
+    margin-right: .5rem;
+    display: inline-block;
+    line-height: normal;
+}

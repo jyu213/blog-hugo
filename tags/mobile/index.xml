@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mobile on 见见 - 前端小记</title>
+    <link>http://jyu213.github.io/tags/mobile/</link>
+    <description>Recent content in Mobile on 见见 - 前端小记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 20 Jul 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://jyu213.github.io/tags/mobile/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>移动端Web系列1 --- 初始化</title>
+      <link>http://jyu213.github.io/blog/2014/07/20/%E7%A7%BB%E5%8A%A8%E7%AB%AFweb%E7%B3%BB%E5%88%971-----%E5%88%9D%E5%A7%8B%E5%8C%96/</link>
+      <pubDate>Sun, 20 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://jyu213.github.io/blog/2014/07/20/%E7%A7%BB%E5%8A%A8%E7%AB%AFweb%E7%B3%BB%E5%88%971-----%E5%88%9D%E5%A7%8B%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>移动端Web系列2 --- 调试</title>
+      <link>http://jyu213.github.io/blog/1/01/01/%E7%A7%BB%E5%8A%A8%E7%AB%AFweb%E7%B3%BB%E5%88%972-----%E8%B0%83%E8%AF%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://jyu213.github.io/blog/1/01/01/%E7%A7%BB%E5%8A%A8%E7%AB%AFweb%E7%B3%BB%E5%88%972-----%E8%B0%83%E8%AF%95/</guid>
+      <description>
+
+&lt;h3 id=&#34;浏览器调试:2594d53d9336389dbe2fe5dd4d91c2f1&#34;&gt;浏览器调试&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;chrome（V35.0.1916.153）
+使用chrome deleloper tool模拟移动设备。注意，部分功能还是与真机有差别，所以还是建议开发完成后在真机中看一下效果。
+打开方法&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;调出开发者工具（MAC: cmd+opt+i / WIN: F12）&lt;/li&gt;
+&lt;li&gt;点击&lt;code&gt;show console&lt;/code&gt;（MAC: Esc）&lt;/li&gt;
+&lt;li&gt;选择&lt;code&gt;Emulation&lt;/code&gt;，选择需要的device/user Agent等参数&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Firefox (V30.0)
+我平时没用FF开发。部分细节不是特别熟悉。
+好像这个没有对手势等的支持。&lt;/p&gt;
+
+&lt;p&gt;打开方法：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;工具 - Web开发者 - 响应式设计视图&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;safari
+Develop - User Agent。
+我只在数据线连接  iphone 的调试的时候用的比较多。 这个下面会讲到。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;设备调试:2594d53d9336389dbe2fe5dd4d91c2f1&#34;&gt;设备调试&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;IOS设备远程调试（MAC）&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;IOS中设置safari高级选项中开启Web检查器&lt;/li&gt;
+&lt;li&gt;IOS设备通过数据线连接MAC&lt;/li&gt;
+&lt;li&gt;IOS safari中打开页面&lt;/li&gt;
+&lt;li&gt;打开桌面版Safari，点击开发菜单，选择你调试的设备名，选择调试的网页&lt;/li&gt;
+&lt;li&gt;可看到类似Web的调试界面。具体功能再自己琢磨好了&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Android设备远程调试（MAC/PC）&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;开启系统设置中USB调试（开发人员选项）&lt;/li&gt;
+&lt;li&gt;开启桌面Chrome设置中的USB调试选项&lt;/li&gt;
+&lt;li&gt;手机chrome浏览器中打开相应的网页&lt;/li&gt;
+&lt;li&gt;桌面Chrome可看到对应打开的页面选项&lt;/li&gt;
+&lt;li&gt;备注： 网上的ADB插件，貌似在最新版本chrome中可以不用的&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;移动设置 UC浏览器&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://plus.uc.cn/document/webapp/doc5.html&#34;&gt;参见官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;模拟器:2594d53d9336389dbe2fe5dd4d91c2f1&#34;&gt;模拟器&lt;/h3&gt;
+
+&lt;p&gt;没尝试过。&lt;/p&gt;
+
+&lt;h3 id=&#34;其它:2594d53d9336389dbe2fe5dd4d91c2f1&#34;&gt;其它&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;二维码扫描，真机测试。可使用插件生成二维码。&lt;/li&gt;
+&lt;li&gt;同网络中，ip地址访问（注意引用资源路径，也需做相应转换）&lt;/li&gt;
+&lt;li&gt;weinre,MIHTol等，现在基本不在使用了&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;写在最后:2594d53d9336389dbe2fe5dd4d91c2f1&#34;&gt;写在最后&lt;/h3&gt;
+
+&lt;p&gt;还有更高效的方法的，欢迎继续做补充。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>移动端Web系列3 -- viewport</title>
+      <link>http://jyu213.github.io/blog/1/01/01/%E7%A7%BB%E5%8A%A8%E7%AB%AFweb%E7%B3%BB%E5%88%973----viewport/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://jyu213.github.io/blog/1/01/01/%E7%A7%BB%E5%8A%A8%E7%AB%AFweb%E7%B3%BB%E5%88%973----viewport/</guid>
+      <description>
+
+&lt;h3 id=&#34;写在前面:5ee377efb05b9b8169dd9fd09ab77653&#34;&gt;写在前面&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;这里就跳过了文档申明知识的介绍了，这么好的机会还不用html5的，你还在等什么？&lt;/li&gt;
+&lt;li&gt;概念了解： device pixels and css pixels
+
+&lt;ul&gt;
+&lt;li&gt;css像素： 浏览器使用的抽象单位，主要用来在网页上绘制内容&lt;/li&gt;
+&lt;li&gt;设备像素： 显示屏幕的最小物理单位，每个 dp 包含自己的颜色、亮度&lt;/li&gt;
+&lt;li&gt;css 1px != device 1px&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;概念了解： screen size and window size&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;viewport:5ee377efb05b9b8169dd9fd09ab77653&#34;&gt;viewport&lt;/h3&gt;
+
+&lt;h4 id=&#34;由来:5ee377efb05b9b8169dd9fd09ab77653&#34;&gt;由来&lt;/h4&gt;
+
+&lt;p&gt;由于手机屏幕相对桌面显示器要小很多，传统网页上的设计在手机上的体验会很糟糕，阅读性非常差。
+为了让手机也能获得良好的网页浏览体验，Apple 在移动版 Safari 中定义了 viewport meta 标签(如果没记错最早提出的话)，用于创建一个虚拟窗口（layout viewport），这个虚拟窗口的分辨率接近于桌面显示器，Apple 将其定义为980px。然后将虚拟窗口映射到移动设备的屏幕上，按比例缩放并重新渲染网页。&lt;/p&gt;
+
+&lt;h4 id=&#34;划分:5ee377efb05b9b8169dd9fd09ab77653&#34;&gt;划分&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;虚拟窗口（layout viewport）
+移动浏览器默认情况下把 viewport 设置为一个比较宽的值（防止太窄而在可视区域中显示错乱）。该默认的 viewport 称为 layout viewport。
+宽度可通过 Js 获取(基本所有设备都支持)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;document.documentElement.clientWidth
+document.documentElement.clientHeight
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;视觉窗口（visual viewport）
+浏览器可视区域大小。可理解为手机物理屏幕。&lt;/p&gt;
+
+&lt;p&gt;宽度可通过 Js 获取(不支持Android2, Opera Mini, UC8)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;window.innerWidth
+window.innerHeight
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ideal viewport
+由Peter-Paul Koch提出的一种概念，一个完美适配移动设备的 viewport。&lt;strong&gt;理想状态&lt;/strong&gt;是不需要用户缩放和横向滚动条就能正常查看，显示的文字大小合适，不区分分辨率，屏幕密度等。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;meta viewport
+移动端默认使用的是 layout viewport ，而我们想要达到类似 ideal viewport 的效果的话，可以通过 meta 标签来对 viewport 进行控制。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;移动开发中必出场的定义&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;用来实现 ideal viewport 的效果。&lt;/p&gt;
+
+&lt;p&gt;meta viewport 标签属性说明&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;width: 320 // 设置 layout viewport 的宽度，device-width 为设备宽度
+height: 800 // 和 width 对应，一般很少用
+initial-scale: 1 // 设置页面初始缩放值，
+minimum-scale: 1 // 允许用户的最小缩放值
+maximum-scale: 1 // 允许用户的最大缩放值
+user-scalable: yes/no // 是否允可以手动缩放
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;关于 meta viewport 的各属性还有很多有趣的知识点。视频中可以揭晓~&lt;/p&gt;
+
+&lt;h3 id=&#34;tips:5ee377efb05b9b8169dd9fd09ab77653&#34;&gt;Tips&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;device-width 查询的是设备像素&lt;/li&gt;
+&lt;li&gt;不同浏览器的默认 layout viewport 略有不同&lt;/li&gt;
+&lt;li&gt;事件坐标在移动端各种不兼容&lt;/li&gt;
+&lt;li&gt;initial-scale 和 device-width 叠加才能兼容目前的移动设备viewport 匹配&lt;/li&gt;
+&lt;li&gt;缩放值越大，当前 viewport 的宽度就越小，但是，并不是所有设备都能支持 initial-scale=2 的&lt;/li&gt;
+&lt;li&gt;当前缩放值 = ideal viewport 宽度  / visual viewport 宽度&lt;/li&gt;
+&lt;li&gt;当设置宽度值冲突时，浏览器会选择最大值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;参考文献:5ee377efb05b9b8169dd9fd09ab77653&#34;&gt;参考文献&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Mobile/Viewport_meta_tag&#34;&gt;Mozilla viewport&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developers.google.com/speed/docs/insights/ConfigureViewport&#34;&gt;Google Developers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.quirksmode.org/mobile/viewports.html&#34;&gt;ppk - viewport1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.quirksmode.org/mobile/viewports2.html&#34;&gt;ppk - viewport2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.quirksmode.org/mobile/metaviewport/&#34;&gt;ppk - viewport3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://youtu.be/8J6EdpXdzqc&#34;&gt;ppk 大神的视频&lt;/a&gt;，建议看看。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>移动端Web系列4 -- meta</title>
+      <link>http://jyu213.github.io/blog/1/01/01/%E7%A7%BB%E5%8A%A8%E7%AB%AFweb%E7%B3%BB%E5%88%974----meta/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://jyu213.github.io/blog/1/01/01/%E7%A7%BB%E5%8A%A8%E7%AB%AFweb%E7%B3%BB%E5%88%974----meta/</guid>
+      <description>
+
+&lt;h2 id=&#34;分类:4e435b7af9c4b4216c2cd567c2e774c2&#34;&gt;分类&lt;/h2&gt;
+
+&lt;p&gt;在介绍移动端特有 meta 标签之前，先简单说一下 HTML meta 标签的一些知识。
+meta 标签包含了 &lt;strong&gt;HTTP 标题信息&lt;/strong&gt;(http-equiv) 和&lt;strong&gt;页面描述信息&lt;/strong&gt;(name)。
+* http-equiv:
+    该枚举的属性定义，可以改变服务器和用户代理行为的编译。编译的值取content 里的内容。简单来说即可以模拟 HTTP 协议响应头。
+    最常见的大概属于&lt;code&gt;Content-Type&lt;/code&gt;了，设置编码类型。如&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;     &amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html; charset=utf-8&amp;quot; /&amp;gt;
+
+H5中可以简化为
+
+    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+
+
+http-equiv常见还有其它如下等（合理使用可增加 SEO 收录）。
+- Content-Language : 设置网页语言
+- Refresh : 指定时间刷新页面
+- set-cookie : 设定页面 cookie 过期时间
+- last-modified : 页面最后生成时间
+- expires : 设置 cache 过期时间
+- cache-control : 设置文档的缓存机制
+- ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;name:
+该属性定义了文档级元数据的名称。用于对应网页内容，便于搜索引擎查找分类，如 keywords, description; 也可以使用浏览器厂商自定义的 meta， 如 viewport；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;移动端特有属性:4e435b7af9c4b4216c2cd567c2e774c2&#34;&gt;移动端特有属性&lt;/h3&gt;
+
+&lt;h4 id=&#34;viewport:4e435b7af9c4b4216c2cd567c2e774c2&#34;&gt;viewport&lt;/h4&gt;
+
+&lt;p&gt;可视区域的定义，如屏幕缩放等。告诉浏览器如何规范的渲染网页。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上一章节中已经详细讲解过了，这边就不再重复了。&lt;/p&gt;
+
+&lt;h4 id=&#34;format-detection:4e435b7af9c4b4216c2cd567c2e774c2&#34;&gt;format-detection&lt;/h4&gt;
+
+&lt;p&gt;对电话号码的识别&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;meta name=&amp;quot;format-detection&amp;quot; content=&amp;quot;telphone=no&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;ios私有属性:4e435b7af9c4b4216c2cd567c2e774c2&#34;&gt;IOS私有属性&lt;/h3&gt;
+
+&lt;h4 id=&#34;apple-mobile-web-app-capable:4e435b7af9c4b4216c2cd567c2e774c2&#34;&gt;apple-mobile-web-app-capable&lt;/h4&gt;
+
+&lt;p&gt;启用 webapp 模式, 会隐藏工具栏和菜单栏，和其它配合使用。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;meta name=&amp;quot;apple-mobile-web-app-capable&amp;quot; content=&amp;quot;yes&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;apple-mobile-web-app-status-bar-style:4e435b7af9c4b4216c2cd567c2e774c2&#34;&gt;apple-mobile-web-app-status-bar-style&lt;/h4&gt;
+
+&lt;p&gt;在webapp模式下，改变顶部状态条的颜色。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;meta name=&amp;quot;apple-mobile-web-app-status-bar-style&amp;quot; content=&amp;quot;black&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;default(白色，默认) | black(黑色) | black-translucent(半透明)
+注意：若值为“black-translucent”将会占据页面位置，浮在页面上方（会覆盖页面 20px 高度， Retina 屏幕为 40px ）。&lt;/p&gt;
+
+&lt;h3 id=&#34;webapp对应的link标签:4e435b7af9c4b4216c2cd567c2e774c2&#34;&gt;webapp对应的Link标签&lt;/h3&gt;
+
+&lt;h4 id=&#34;apple-touch-icon:4e435b7af9c4b4216c2cd567c2e774c2&#34;&gt;apple-touch-icon&lt;/h4&gt;
+
+&lt;p&gt;在webapp下，指定放置主屏幕上 icon 文件路径;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;link rel=&amp;quot;apple-touch-icon&amp;quot; href=&amp;quot;touch-icon-iphone.png&amp;quot;&amp;gt;
+&amp;lt;link rel=&amp;quot;apple-touch-icon&amp;quot; sizes=&amp;quot;76x76&amp;quot; href=&amp;quot;touch-icon-ipad.png&amp;quot;&amp;gt;
+&amp;lt;link rel=&amp;quot;apple-touch-icon&amp;quot; sizes=&amp;quot;120x120&amp;quot; href=&amp;quot;touch-icon-iphone-retina.png&amp;quot;&amp;gt;
+&amp;lt;link rel=&amp;quot;apple-touch-icon&amp;quot; sizes=&amp;quot;152x152&amp;quot; href=&amp;quot;touch-icon-ipad-retina.png&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;默认 iphone 大小为 60px, ipad 为 76px, retina 屏乘2；
+如没有一致尺寸的图标，会优先选择比推荐尺寸大，但是最接近推荐尺寸的图标。
+ios7以前系统默认会对图标添加特效（圆角及高光），如果不希望系统添加特效，则可以用apple-touch-icon-precomposed.png代替apple-touch-icon.png&lt;/p&gt;
+
+&lt;h4 id=&#34;apple-touch-startup-image:4e435b7af9c4b4216c2cd567c2e774c2&#34;&gt;apple-touch-startup-image&lt;/h4&gt;
+
+&lt;p&gt;在 webapp 下，设置启动时候的界面;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;link rel=&amp;quot;apple-touch-startup-image&amp;quot; href=&amp;quot;/startup.png&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;不支持 size 属性，可以使用 media query 来控制。iphone 和 touch 上，图片大小必须是 230*480 px,只支持竖屏;&lt;/p&gt;
+
+&lt;h3 id=&#34;其它meta:4e435b7af9c4b4216c2cd567c2e774c2&#34;&gt;其它meta&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- 启用360浏览器的极速模式(webkit) --&amp;gt;
+&amp;lt;meta name=&amp;quot;renderer&amp;quot; content=&amp;quot;webkit&amp;quot;&amp;gt;
+&amp;lt;!-- 避免IE使用兼容模式 --&amp;gt;
+&amp;lt;meta http-equiv=&amp;quot;X-UA-Compatible&amp;quot; content=&amp;quot;IE=edge&amp;quot;&amp;gt;
+&amp;lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&amp;gt;
+&amp;lt;meta name=&amp;quot;HandheldFriendly&amp;quot; content=&amp;quot;true&amp;quot;&amp;gt;
+&amp;lt;!-- 微软的老式浏览器 --&amp;gt;
+&amp;lt;meta name=&amp;quot;MobileOptimized&amp;quot; content=&amp;quot;320&amp;quot;&amp;gt;
+&amp;lt;!-- uc强制竖屏 --&amp;gt;
+&amp;lt;meta name=&amp;quot;screen-orientation&amp;quot; content=&amp;quot;portrait&amp;quot;&amp;gt;
+&amp;lt;!-- QQ强制竖屏 --&amp;gt;
+&amp;lt;meta name=&amp;quot;x5-orientation&amp;quot; content=&amp;quot;portrait&amp;quot;&amp;gt;
+&amp;lt;!-- UC强制全屏 --&amp;gt;
+&amp;lt;meta name=&amp;quot;full-screen&amp;quot; content=&amp;quot;yes&amp;quot;&amp;gt;
+&amp;lt;!-- QQ强制全屏 --&amp;gt;
+&amp;lt;meta name=&amp;quot;x5-fullscreen&amp;quot; content=&amp;quot;true&amp;quot;&amp;gt;
+&amp;lt;!-- UC应用模式 --&amp;gt;
+&amp;lt;meta name=&amp;quot;browsermode&amp;quot; content=&amp;quot;application&amp;quot;&amp;gt;
+&amp;lt;!-- QQ应用模式 --&amp;gt;
+&amp;lt;meta name=&amp;quot;x5-page-mode&amp;quot; content=&amp;quot;app&amp;quot;&amp;gt;
+&amp;lt;!-- windows phone 点击无高光 --&amp;gt;
+&amp;lt;meta name=&amp;quot;msapplication-tap-highlight&amp;quot; content=&amp;quot;no&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.w3cplus.com/mobile/mobile-terminal-refactoring-create-page.html&#34;&gt;参见w3cplus&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;末尾总结:4e435b7af9c4b4216c2cd567c2e774c2&#34;&gt;末尾总结&lt;/h3&gt;
+
+&lt;p&gt;所以，一般新建页面的时候，可以采用如下结构， 再依据自己的实际需要添加所需即可。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+    &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&amp;quot;&amp;gt;
+    &amp;lt;meta name=&amp;quot;apple-mobile-web-app-capable&amp;quot; content=&amp;quot;yes&amp;quot; /&amp;gt;
+    &amp;lt;meta name=&amp;quot;format-detection&amp;quot;content=&amp;quot;telephone=no&amp;quot; /&amp;gt;
+    &amp;lt;title&amp;gt;Demo&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+    &amp;lt;!-- code here --&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;文献参考:4e435b7af9c4b4216c2cd567c2e774c2&#34;&gt;文献参考&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta&#34;&gt;MDN meta&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.apple.com/library/safari/documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html&#34;&gt;苹果官方 webapp meta 说明&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.apple.com/Library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html&#34;&gt;IOS Configuring Web Applications&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.w3cplus.com/mobile/mobile-terminal-refactoring-create-page.html&#34;&gt;移动端重构系列2——新建空白页面&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
