@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.15" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans|Marcellus+SC'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://jyu213.github.io//index.xml">
+
+    
+    <title>ES6 - 解构赋值 - 见见 - 前端小记</title>
+    <meta property='og:title' content="ES6 - 解构赋值 - 见见 - 前端小记">
+    <meta property="og:type" content="article">
+    
+
+    <meta property="og:url" content="http://jyu213.github.io/blog/2015/12/14/es6---%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/">
+    
+    
+
+  </head>
+
+  <body>
+
+    <header class="site">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://jyu213.github.io/">见见 - 前端小记</a>
+          </div>
+
+          <div id="navbar" class="collapse navbar-collapse">
+            
+          </div>
+
+        </div>
+      </nav>
+    </header>
+
+    <div class="site">
+      <div class="container">
+
+
+
+<div class="single">
+
+  <div class="row">
+    <div class="col-md-8">
+
+      <article class="single" itemscope="itemscope" itemtype="http://schema.org/Article">
+
+        <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="http://jyu213.github.io/"/>
+        <meta itemprop="dateModified" content="2015-12-14T00:00:00&#43;00:00">
+        <meta itemprop="headline" content="ES6 - 解构赋值">
+        <meta itemprop="description" content="在解释什么是解构赋值前，我们先来看一下， ES5 中对变量的声明和赋值。 var str = &#39;hello word&#39;; 左边一个变量名，右边可以是字符串，数组或对象。 ES6 中增加了一种更为便">
+        <meta itemprop="url" content="http://jyu213.github.io/blog/2015/12/14/es6---%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/">
+        <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+          <meta itemprop="url" content="http://jyu213.github.io/images/default.jpg" />
+          <meta itemprop="width" content="800">
+          <meta itemprop="height" content="800">
+        </div>
+        <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+          <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+            <meta itemprop="url" content="http://jyu213.github.io/images/logo.jpg">
+            <meta itemprop="width" content="100">
+            <meta itemprop="height" content="100">
+          </div>
+          <meta itemprop="name" content="见见 - 前端小记">
+        </div>
+        <div itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <meta itemprop="name" content="见见">
+        </div>
+
+        <header class="article-header">
+          <h1 class="article-title">ES6 - 解构赋值</h1>
+
+          <time itemprop="datePublished" pubdate="pubdate" datetime="2015-12-14T00:00:00&#43;00:00">2015-12-14</time>
+
+          
+            <a href="http://jyu213.github.io/tags/es6" class="tag">es6</a> 
+          
+        </header>
+
+        <div class="article-body" itemprop="articleBody">
+          
+
+<p>在解释什么是解构赋值前，我们先来看一下， ES5 中对变量的声明和赋值。</p>
+
+<pre><code class="language-javascript">var str = 'hello word';
+</code></pre>
+
+<p>左边一个变量名，右边可以是字符串，数组或对象。</p>
+
+<p>ES6 中增加了一种更为便捷的赋值方式。称为 <strong>Destructuring</strong> 。好像大家普遍翻译为解构。解构赋值允许我们将数组或对象的属性赋予给任何变量，该变量的定义语法与数组字面量或对象字面量很相似。举个例子可以直观的说明。</p>
+
+<pre><code class="language-javascript">let [speak, name] = ['hello', 'destructuring'];
+console.log( speak + ' ' + name ); // hello destructuring
+</code></pre>
+
+<h3 id="数组的解构赋值:4428bcf4a593931f8cb7d23fa484a629">数组的解构赋值</h3>
+
+<p>用更加直白的话来描述就是，等号两边保持相同的形式（数组对应数组，对象对应对象），则左边的变量就会被赋予对应的值。如果对应的右边值缺失，缺失部分变量值为 <code>undefined</code> ,如果右边值多余，依旧能够正常解构。</p>
+
+<pre><code class="language-javascript">// ES6 中
+let arr = [1,2,3,4,5];
+let [el1, el2] = [arr];
+// 或者
+let [el1, el2] = [1,2,3,4,5];
+// el1 =&gt; 1, el2 =&gt; 2
+</code></pre>
+
+<p>解构赋值也是可嵌套的：</p>
+
+<pre><code class="language-javascript">let value = [1, 2, [3, 4, 5]];
+let [el1, el2, [el3, el4]] = value;
+</code></pre>
+
+<p>同样可以通过简单地在指定位置省略变量来忽略数组中的某个元素：</p>
+
+<pre><code class="language-javascript">let value = [1, 2, 3, 4, 5];
+let [el1, , el3, , el5] = value;
+</code></pre>
+
+<p>更进一步，默认值同样也可以被指定：</p>
+
+<pre><code class="language-javascript">let [firstName = &quot;John&quot;, lastName = &quot;Doe&quot;] = [];
+</code></pre>
+
+<p>ES6中，提供了一种将右侧多余的值以数组的形式赋值给左侧变量的语法——“rest“模式：</p>
+
+<pre><code class="language-javascript">let [head, ...tail] = [1, 2, 3, 4];
+console.log(tail);  // [2, 3, 4]
+</code></pre>
+
+<p>当默认值不存在，变量值就等于 <code>undefined</code></p>
+
+<pre><code class="language-javascript">let [missing] = [];
+console.log(missing);  // undefined
+</code></pre>
+
+<p>这里的数组，指的是部署了 <code>[Iterator](http://www.2ality.com/2015/02/es6-iteration.html)</code> 接口的数据结构。</p>
+
+<h3 id="对象的解构赋值:4428bcf4a593931f8cb7d23fa484a629">对象的解构赋值</h3>
+
+<p>和数组的用法相类似，一个主要的不同点是，对象是无次序排列的，所以变量必须和属性名相同。</p>
+
+<pre><code class="language-javascript">let person = {firstName: &quot;John&quot;, lastName: &quot;Doe&quot;};
+let {firstName, lastName} = person;
+</code></pre>
+
+<p>解构另一个特性是，变量 keys 可以使用<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names">计算后的属性名</a>，但是如果你对这容易混淆的话，不建议使用。</p>
+
+<pre><code class="language-javascript">let person = {firstName: &quot;John&quot;, lastName: &quot;Doe&quot;};
+let {firstName: name, lastName} = person;
+// `name`变量将会被声明为 `person.firstName` 的值
+</code></pre>
+
+<h3 id="函数参数的解构赋值:4428bcf4a593931f8cb7d23fa484a629">函数参数的解构赋值</h3>
+
+<p>函数的参数也可以解构赋值。</p>
+
+<pre><code class="language-javascript">function add({x: 0, y: 0}){
+    return x+y;
+}
+add({1,2}); // 3
+</code></pre>
+
+<h3 id="null-和-undefined:4428bcf4a593931f8cb7d23fa484a629">null 和 undefined</h3>
+
+<p>当尝试解构 <code>null</code> 和 <code>undefined</code> 的时候会报错。这是因为使用对象赋值模式时，被解构的值必需能够转换成一个对象（object）。大多数的类型都可以转换为一个对象，但null和undefined却并不能被转换。</p>
+
+<h3 id="其它:4428bcf4a593931f8cb7d23fa484a629">其它</h3>
+
+<p>解构赋值的好处有很多，比如</p>
+
+<ul>
+<li>两个值的交换</li>
+<li>函数参数默认值</li>
+<li>函数返回值</li>
+<li>正则匹配的返回值</li>
+<li>快速处理 JSON 数据</li>
+<li>遍历Map结构</li>
+</ul>
+
+<p>ES6 的解构赋值给 JS 的书写带来了很大的便利性，同时也提高了代码的可读性。但是也需要注意一些问题，避免适得其反。
+* 关于圆括号的问题，欢迎翻看<a href="http://es6.ruanyifeng.com/#docs/destructuring#圆括号问题">阮一峰老师的博客</a>
+* 解构的嵌套尽量不要太深
+* 函数有多个返回值时，尽量使用对象解构而不用数组解构，避免出现顺序对应问题
+* 已声明过的变量不能用于解构</p>
+
+<h3 id="浏览器支持:4428bcf4a593931f8cb7d23fa484a629">浏览器支持</h3>
+
+<p><a href="http://kangax.github.io/compat-table/es6/#destructuring">http://kangax.github.io/compat-table/es6/#destructuring</a>
+不完全统计：
+* IE NO
+* FF 38+ (大部分)
+* CH/OP NO
+* Webkit
+* SF 9+, 8部分
+* IOS8 部分</p>
+
+<p>PS: 整理的时候发现以前还保留着这样一份文章，无新，基本参考下述文章内容。仅供学习。</p>
+
+<h3 id="参考文章:4428bcf4a593931f8cb7d23fa484a629">参考文章</h3>
+
+<ul>
+<li><a href="http://es6.ruanyifeng.com/#docs/destructuring">变量的解构赋值 - 阮一峰</a></li>
+<li><a href="https://hacks.mozilla.org/2015/05/es6-in-depth-destructuring/">ES6 In Depth: Destructuring</a></li>
+<li><a href="https://strongloop.com/strongblog/getting-started-with-javascript-es6-destructuring/">Getting Started with JavaScript ES6 Destructuring</a></li>
+</ul>
+
+        </div>
+
+
+        <aside>
+          
+<div class="ds-thread" data-thread-key="http://jyu213.github.io/blog/2015/12/14/es6---%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" data-title="ES6 - 解构赋值" data-url="http://jyu213.github.io/blog/2015/12/14/es6---%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"j4evee"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+        </aside>
+
+      </article>
+
+    </div>
+    <div class="col-md-4">
+      
+<aside class="site">
+
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">tag</h2>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://jyu213.github.io/tags/mobile" class="list-group-item">mobile</a>
+      
+      <a href="http://jyu213.github.io/tags/doc" class="list-group-item">doc</a>
+      
+      <a href="http://jyu213.github.io/tags/css" class="list-group-item">css</a>
+      
+      <a href="http://jyu213.github.io/tags/es6" class="list-group-item">es6</a>
+      
+      <a href="http://jyu213.github.io/tags/html5" class="list-group-item">html5</a>
+      
+      <a href="http://jyu213.github.io/tags/git" class="list-group-item">git</a>
+      
+      <a href="http://jyu213.github.io/tags/js" class="list-group-item">js</a>
+      
+      <a href="http://jyu213.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96" class="list-group-item">自动化</a>
+      
+    </div>
+  </div>
+  
+
+</aside>
+
+
+    </div>
+  </div>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site">
+      <div class="container">
+        <p>&copy; 2017 见见</p>
+        <p>Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>,</p>
+        <p>Theme <a href="https://github.com/dim0627/hugo_theme_robust" target="_blank">Robust</a> designed by <a href="http://yet.unresolved.xyz" target="_blank">Daisuke Tsuji</a></p>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-41493088-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+  </body>
+</html>
+

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Css on 见见 - 前端小记</title>
+    <link>http://jyu213.github.io/tags/css/</link>
+    <description>Recent content in Css on 见见 - 前端小记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 01 Apr 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://jyu213.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>CSS 模块化组织之道</title>
+      <link>http://jyu213.github.io/blog/2017/04/01/css-%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BB%84%E7%BB%87%E4%B9%8B%E9%81%93/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://jyu213.github.io/blog/2017/04/01/css-%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BB%84%E7%BB%87%E4%B9%8B%E9%81%93/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;前几天还在问朋友，CSS 近期有没有推出啥比较火热的，答，除了 &lt;code&gt;Grid&lt;/code&gt; 好像没啥新东西。CSS 确实好像没有 JS 社区那么火热了。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;由于 CSS 自身语言的特点，操作起来非常容易，但是等到项目到达一定程度的时候，想要优雅的管理 CSS，却也不见得那么容易。&lt;/p&gt;
+
+&lt;p&gt;大家平常在开发 CSS 的过程中， 肯定遇到过下面的一些情况：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;全局命名空间容易冲突&lt;/li&gt;
+&lt;li&gt;文件依赖管理的混乱&lt;/li&gt;
+&lt;li&gt;层级嵌套太深&lt;/li&gt;
+&lt;li&gt;样式被重置&lt;/li&gt;
+&lt;li&gt;大量重复、冗余、无用的代码&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;好的 CSS 设计应该具有&lt;strong&gt;可读性&lt;/strong&gt;，&lt;strong&gt;维护性&lt;/strong&gt;，&lt;strong&gt;扩展性&lt;/strong&gt;和&lt;strong&gt;复用性&lt;/strong&gt;。这几条其实也不用特地的去解释，在软件开发设计中并不陌生。大体来说，就是设计 CSS 的时候，我们需要考虑书写的条理是否清晰，后续修改内容是否低成本，新增内容又是否会打破现有逻辑。而在组织 CSS 的时候，尽量地多考虑下抽象与解耦，可以依据现有的内容，快速创建新的模块。&lt;/p&gt;
+
+&lt;p&gt;而现在对于 CSS 模块化的解决方案其实也有很多，比如 &lt;code&gt;OOCSS&lt;/code&gt;，&lt;code&gt;SMACSS&lt;/code&gt;，&lt;code&gt;CSS Modules&lt;/code&gt; 以及 &lt;code&gt;BEM&lt;/code&gt; 的命名规则。在这里，我也不一一介绍这些概念具体是什么了，有兴趣的同学可以自己去研究下，相关的文章已经太多了。&lt;/p&gt;
+
+&lt;p&gt;在如此多的选择之中，甚至可以说是混乱，我觉得最重要的是，各个团队应该依据各自的业务情况选择合适的方案，并做好团队中的&lt;strong&gt;约定&lt;/strong&gt;。大家遵循同一套约定与规范，在合理解决问题的同时也避免出现使用混乱的情况。&lt;/p&gt;
+
+&lt;p&gt;下面来谈谈我自己平时项目中的一些解决方案。这也是平时开发经验和借鉴现有方案的组合。&lt;/p&gt;
+
+&lt;p&gt;闲话扯在前面的是，目前方案中推荐使用预处理器等方式。虽然即使不用也能满足绝大多数场景，但是有更优雅而便捷的方式何乐而不为呢。&lt;/p&gt;
+
+&lt;p&gt;首先，目录划分。将 CSS 分为两类，通用模块和业务模块，可以适当地分为多个小文件。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通用模块中存放公共部分，同一类别独自一文件，可以是表示结构的，也可以是表示主题的，唯独表示页面具体逻辑的部分，不能放在该目录下。&lt;/li&gt;
+&lt;li&gt;业务模块则指具体页面对应的 CSS 文件。一个页面单独对应一个 CSS 文件。通过 &lt;code&gt;@import&lt;/code&gt; 引入相关的通用模块子文件及需要更细粒度拆分的 CSS 文件。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如下图所示，&lt;code&gt;common&lt;/code&gt; 中存在的为共用部分文件，而 &lt;code&gt;page&lt;/code&gt; 下则具体对应到指定的页面。&lt;code&gt;Demo/style.css&lt;/code&gt; 为对应 &lt;code&gt;Demo&lt;/code&gt; 页面中的 CSS 文件。其中 &lt;code&gt;style.css&lt;/code&gt; 可能还 &lt;code&gt;@import&lt;/code&gt; 了 &lt;code&gt;common/form.css&lt;/code&gt;，&lt;code&gt;common/btn.css&lt;/code&gt; 以及 &lt;code&gt;Demo/css&lt;/code&gt; 目录下的文件。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    ├── common
+    │   ├── btn.css
+    │   ├── common.css
+    │   ├── form.css
+    │   └── layout.css
+    └── page
+        └── Demo
+            ├── css
+            │   ├── list.css
+            │   └── search.css
+            └── style.css
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其次，在命名方式上，主要以原子类 + BEM 的方式来命名。
+这里的原子类，不是像 &lt;code&gt;mr10&lt;/code&gt;， &lt;code&gt;pull-right&lt;/code&gt; 这类方式，而是带有固有前缀的命名方式。好处是可以通过命名来快速识别所属位置及功能。比如以 &lt;code&gt;ly-&lt;/code&gt; 前缀来表示和页面布局相关结构，如两栏三栏。再比如 &lt;code&gt;pos-mr10&lt;/code&gt;，&lt;code&gt;pos-fl&lt;/code&gt; ，&lt;code&gt;sty-fiz12&lt;/code&gt;等等。这个可能目前需要团队内约定。&lt;/p&gt;
+
+&lt;p&gt;至于具体到达一个组件级别的时候，直接推荐使用 BEM 方式来维护。BEM 真心强大，虽然初识乱花渐欲迷人眼。BEM 后续再单独拆出来讲吧。&lt;/p&gt;
+
+&lt;p&gt;来看一些代码的片段加强理解。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;$orange: #fe7800;
+
+@function Mpercentage($value){
+    @return percentage($value/640);
+}
+
+// btn.css
+.btn-full{
+    display: inline-block;
+    width: 100%; height: 48px; line-height: 48px;
+    text-align: center; font-size: 1.8rem;
+}
+.btn-inline{
+    display: inline-block;
+    padding: 0 Mpercentage(60);
+    height: 30px; line-height: 30px;
+}
+.btn-purple{
+    color: #fff;
+    background: #9a78c8;
+}
+.btn-white{
+    color: #666;
+    background: #fff;
+}
+
+// login.css
+.login-form{
+    font-size: 1.4rem;
+
+    &amp;amp;__item{
+        position: relative;
+        margin-bottom: Mpercentage(20);
+    }
+    &amp;amp;__item_btn{
+        margin-top: Mpercentage(30);
+    }
+    &amp;amp;__item_tips{
+        line-height: 35px; font-size: 1.3rem;
+        color: #666;
+    }
+    &amp;amp;__input{
+        display: block;
+        padding: 0 3%;
+        width: 93%; height: 43px; line-height: 43px;
+        font-size: 1.5rem;
+        border: 1px solid #dadada;
+
+        &amp;amp;:focus{
+            border-color: #baacdf;
+        }
+        &amp;amp;.form-error{
+            border-color: $orange;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最后，通过函数、组件模块的抽离来实现页面的快速重组。这里其实蛮多都依赖到预处理器的特性了，从而使得 CSS 可以变得更加灵活。&lt;/p&gt;
+
+&lt;p&gt;至此，主要概括起来就是通过文件与命名来解决冲突问题，通过预处理器来解决维护扩展问题。&lt;/p&gt;
+
+&lt;p&gt;那么问题来了，你发现了上述中几个不能满足的场景了么？&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>CSS哲学伪命题</title>
+      <link>http://jyu213.github.io/blog/2016/02/24/css%E5%93%B2%E5%AD%A6%E4%BC%AA%E5%91%BD%E9%A2%98/</link>
+      <pubDate>Wed, 24 Feb 2016 00:43:23 +0800</pubDate>
+      
+      <guid>http://jyu213.github.io/blog/2016/02/24/css%E5%93%B2%E5%AD%A6%E4%BC%AA%E5%91%BD%E9%A2%98/</guid>
+      <description>
+
+&lt;p&gt;标题党。这篇文章断断续续的修改过好几次，也没有满意，本来是想总结一下我这些零散的 CSS 知识结构，可能由于知识体系不全面，总是没能把知识点串联成一个通顺的内容。贴出来权当大家一起讨论下“前世今生”。文章后续可能会不定时更新。&lt;/p&gt;
+
+&lt;p&gt;CSS 作为 Web 的基础部分，极其容易上手。但是 CSS 并不算的上是一门编程语言，在语言能力上略显薄弱，往往导致整体的维护性变差。但是这并没有使得大家停止对 CSS 的探索，从命名规范，目录架构，预处理器(如&lt;code&gt;SASS&lt;/code&gt;)，后处理器（&lt;code&gt;PostCSS&lt;/code&gt;），模块化等等的方向上，努力把 CSS 变得更好。&lt;/p&gt;
+
+&lt;h3 id=&#34;关于自我历程:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;关于自我历程&lt;/h3&gt;
+
+&lt;p&gt;其实我自己并没有系统的学习过 CSS（虽然我现在也不知道如何系统的学习），看了几个视频，扫了下中文版的 API，然后就开始了切图生涯，很多的知识点也都是后来一些零散的博客中了解到的。这过程中，的的确确踩过不少的坑，有的填了，有的继续祸害着项目里其它的同学。也导致我在很长的时段时间里都是走在一个混乱无序的 CSS 书写当中。&lt;/p&gt;
+
+&lt;p&gt;最早遇到的大概的是命名的问题了吧，因为本身积累的词汇量就少，动不动就没单词可用了。那个时候好像也就是网上列出一大堆像&lt;code&gt;menu&lt;/code&gt;， &lt;code&gt;siderbar&lt;/code&gt;之类的“命名大全”来模仿。再到后来接触到了 &lt;code&gt;Bootstrap&lt;/code&gt; 这种比较系统的框架（里面有好多可以值得借鉴的地方），而后又看到一些按类别划分文件，再配有特有的前缀的管理方式(那个时候还并不知道 &lt;code&gt;SMACSS&lt;/code&gt; 的名词)，还有一些原子化，把功能和样式分离等等的。在 &lt;code&gt;SASS&lt;/code&gt; 兴起的时候其实挺兴奋的，因为终于感觉有了点编程的能力，当然了，对变量，嵌套，&lt;code&gt;mixins&lt;/code&gt;等等的使用，很大程度上提高了编程效率。在后来同事的分享中，又了解了 BEM 的命名方式（初看很乱，了解后有一种豁然开然的感觉，细细回想起来，也就是大家约定一套共用的命名规范）。以及通过 &lt;code&gt;PostCSS&lt;/code&gt; 去实现 CSS 中一些自动处理的任务。在 React/ES6/Webpack 出现后，使得很大一部分程度上，CSS 写在 JS 中的方式也开始在特定的场合中频频出现。&lt;/p&gt;
+
+&lt;p&gt;以上，通通出现过我的项目中，在项目切换维护的时候，那感觉，心如刀割。并不是说上面涉及到的知识点有对错的问题，只是在一个团队中，如果没有一些统一的架构和约定，往往到项目的后期会变得越来越不稳定。这不禁又让我想起了 CSS 的学习曲线（像PHP？又来黑了），样式大家都能写，能愉快的维护，又是另一个层次了。&lt;/p&gt;
+
+&lt;p&gt;个人觉得 CSS 中有两个比较重要的点，&lt;strong&gt;语义化&lt;/strong&gt;和&lt;strong&gt;可维护性&lt;/strong&gt;，而最终都是为了提高开发的效率。&lt;/p&gt;
+
+&lt;p&gt;语义化很大一部分程度上是为了阅读需要，简易明了。建议团队内还是要尽量的保持风格一致。其它的，可以看一下&lt;a href=&#34;http://www.tychio.net/tech/2015/03/14/thinking-in-semantic-css.html&#34;&gt;CSS语义思维&lt;/a&gt;的内容，这里不展开讲了。&lt;/p&gt;
+
+&lt;p&gt;可维护性真的是一个很虚的概念，但是涉及到了多方面的各个点。比如，该怎么保持项目的简单性，灵活性，而同时又有足够的扩展能力？又比如如何抽取模块，是以功能划分还是以样式结构？如何重用样式？如何防止样式被覆盖，避免冗余代码等等。&lt;/p&gt;
+
+&lt;p&gt;除了一次性的单页面这种外，一般项目类型的，都建议在开始的时候就搭好底层，统一一下整体风格与使用习惯，保持良好组织结构，命名规范，不然越往后面，可能会遇到更大的问题。&lt;/p&gt;
+
+&lt;p&gt;比如，对文件做一个层次划分&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;基础框架（reset，iconfont，栅格）&lt;/li&gt;
+&lt;li&gt;通用模块（原子，统一规范的模块）&lt;/li&gt;
+&lt;li&gt;页面样式（继承通用模块）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;采用类似 &lt;code&gt;BEM/SUIT&lt;/code&gt; 等等的命名方式等等。&lt;/p&gt;
+
+&lt;h3 id=&#34;现有的技术选择:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;现有的技术选择&lt;/h3&gt;
+
+&lt;p&gt;其实我们在平时应该或多或少的接触过一些 &lt;code&gt;SASS&lt;/code&gt;, &lt;code&gt;Compass&lt;/code&gt;, &lt;code&gt;BEM&lt;/code&gt;, &lt;code&gt;SMACSS&lt;/code&gt;, &lt;code&gt;OOCSS&lt;/code&gt; 的概念与设计模式。当然并没有一种解决方案是绝对的，合适当前的项目就可以了。&lt;/p&gt;
+
+&lt;h4 id=&#34;bem:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;BEM&lt;/h4&gt;
+
+&lt;p&gt;用于解决项目命名规则问题。BEM 通过已&lt;code&gt;block(块)&lt;/code&gt;，&lt;code&gt;element(元素)&lt;/code&gt;，&lt;code&gt;modifier(修饰符)&lt;/code&gt; 的概念，使用连接符串联父级块作为前缀，来实现功能模块命名的唯一性。有兴趣的同学可以看一下 &lt;a href=&#34;http://www.w3cplus.com/css/the-history-of-the-bem-methodology.html&#34;&gt;BEM的进化史&lt;/a&gt;。发现一句话并不太好表述清楚，想要具体了解的同学可以移步&lt;a href=&#34;https://en.bem.info/&#34;&gt;官网&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;BEM&lt;/code&gt; 这种唯一性以及元素间的平级展开，往往在稍微复杂一点的项目里，就会把名字命名的很长很长。目前也有很多是在 &lt;code&gt;BEM&lt;/code&gt; 的基础上衍生出来的一些方式(如 &lt;code&gt;SUIT&lt;/code&gt;)。&lt;/p&gt;
+
+&lt;h4 id=&#34;oocss-object-oriented-css:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;OOCSS （Object Oriented CSS）&lt;/h4&gt;
+
+&lt;p&gt;面向对象 CSS。是一种已面向对象的维护方式去管理组织 CSS 代码。其哲学理念是模块化，功能单一性，关注点分离。&lt;/p&gt;
+
+&lt;p&gt;OOCSS 中有两个重要的原则&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;结构和外观分离。样式尽量独立，和 DOM 无关&lt;/li&gt;
+&lt;li&gt;容器和内容分离。CSS 只关注内容&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;OOCSS&lt;/code&gt; 与 &lt;code&gt;SASS&lt;/code&gt; 结合是一个不错的选择，充分强大。&lt;/p&gt;
+
+&lt;h4 id=&#34;smacss-scalable-and-modular-architecture-for-css:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;SMACSS(Scalable and Modular Architecture for CSS)&lt;/h4&gt;
+
+&lt;p&gt;可扩展和模块化 CSS。
+把 CSS 样式划分为若干个不同类别的文件，如基础，布局，模块，主题等等。在加上一些特有前缀的组合。&lt;/p&gt;
+
+&lt;h4 id=&#34;acss-atomic-css:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;ACSS (Atomic CSS)&lt;/h4&gt;
+
+&lt;p&gt;原子化 CSS。遵循关注点分离原则。&lt;/p&gt;
+
+&lt;h3 id=&#34;css-模块化:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;CSS 模块化&lt;/h3&gt;
+
+&lt;p&gt;随着 &lt;code&gt;React&lt;/code&gt; 的迅速引爆，其它关于 CSS 的另一种使用方式也在兴起。将样式在 JS 中定义。借助 &lt;code&gt;require/import&lt;/code&gt; 而解决了 CSS 中的命名空间的问题，使得单文件变得简单清晰。而通过组合，也可以实现快速的重复利用。甚至有些 CSS 可以单独与组件去绑定。&lt;/p&gt;
+
+&lt;p&gt;以及其它的一些方式。上述的方式，是比较让我眼前一亮的感觉。&lt;/p&gt;
+
+&lt;h3 id=&#34;未来走向:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;未来走向&lt;/h3&gt;
+
+&lt;p&gt;待补充&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;扩展阅读:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;扩展阅读&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://glenmaddern.com/articles/css-modules&#34;&gt;CSS模块&lt;/a&gt;&lt;a href=&#34;http://www.w3cplus.com/css/css-modules.html&#34;&gt;(中文翻译版)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://aliceui.org/docs/rule.html&#34;&gt;CSS 规范和最佳实践&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.w3cplus.com/css/the-history-of-the-bem-methodology.html&#34;&gt;BEM 进化史&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.zhihu.com/question/21943416&#34;&gt;如何理解 CSS 类名语义化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.w3cplus.com/css/css-layers.html&#34;&gt;CSS 分层&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
