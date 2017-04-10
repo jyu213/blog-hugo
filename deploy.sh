@@ -28,3 +28,6 @@ git push origin master
 
 # Come Back
 cd ..
+
+#git subtree push --prefix=public git@github.com:jyu213/blog-hugo.git gh-pages
+#git submodule add git@github.com:jyu213/jyu213.github.io.git public
