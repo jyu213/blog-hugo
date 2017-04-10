@@ -63,7 +63,7 @@
         <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="http://jyu213.github.io/"/>
         <meta itemprop="dateModified" content="2017-04-01T00:00:00&#43;00:00">
         <meta itemprop="headline" content="CSS 模块化组织之道">
-        <meta itemprop="description" content="CSS 模块化组织之道 前几天还在问朋友，CSS 近期有没有推出啥比较火热的，答，除了 Grid 好像没啥新东西。CSS 确实好像没有 JS 社区那么火热了。 由于 CSS 自身">
+        <meta itemprop="description" content="前几天还在问朋友，CSS 近期有没有推出啥比较火热的，答，除了 Grid 好像没啥新东西。CSS 确实好像没有 JS 社区那么火热了。 由于 CSS 自身语言的特点，操作">
         <meta itemprop="url" content="http://jyu213.github.io/blog/2017/04/01/css-%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BB%84%E7%BB%87%E4%B9%8B%E9%81%93/">
         <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
           <meta itemprop="url" content="http://jyu213.github.io/images/default.jpg" />
@@ -93,22 +93,21 @@
         </header>
 
         <div class="article-body" itemprop="articleBody">
-          
-
-<h2 id="css-模块化组织之道:7c62ec2c898d4e7cf14f0c0b8eac3cad">CSS 模块化组织之道</h2>
-
-<blockquote>
+          <blockquote>
 <p>前几天还在问朋友，CSS 近期有没有推出啥比较火热的，答，除了 <code>Grid</code> 好像没啥新东西。CSS 确实好像没有 JS 社区那么火热了。</p>
 </blockquote>
 
 <p>由于 CSS 自身语言的特点，操作起来非常容易，但是等到项目到达一定程度的时候，想要优雅的管理 CSS，却也不见得那么容易。</p>
 
-<p>大家平常在开发 CSS 的过程中， 肯定遇到过下面的一些情况：
-* 全局命名空间容易冲突
-* 文件依赖管理的混乱
-* 层级嵌套太深
-* 样式被重置
-* 大量重复、冗余、无用的代码</p>
+<p>大家平常在开发 CSS 的过程中， 肯定遇到过下面的一些情况：</p>
+
+<ul>
+<li>全局命名空间容易冲突</li>
+<li>文件依赖管理的混乱</li>
+<li>层级嵌套太深</li>
+<li>样式被重置</li>
+<li>大量重复、冗余、无用的代码</li>
+</ul>
 
 <p>好的 CSS 设计应该具有<strong>可读性</strong>，<strong>维护性</strong>，<strong>扩展性</strong>和<strong>复用性</strong>。这几条其实也不用特地的去解释，在软件开发设计中并不陌生。大体来说，就是设计 CSS 的时候，我们需要考虑书写的条理是否清晰，后续修改内容是否低成本，新增内容又是否会打破现有逻辑。而在组织 CSS 的时候，尽量地多考虑下抽象与解耦，可以依据现有的内容，快速创建新的模块。</p>
 
@@ -120,9 +119,12 @@
 
 <p>闲话扯在前面的是，目前方案中推荐使用预处理器等方式。虽然即使不用也能满足绝大多数场景，但是有更优雅而便捷的方式何乐而不为呢。</p>
 
-<p>首先，目录划分。将 CSS 分为两类，通用模块和业务模块，可以适当地分为多个小文件。
-* 通用模块中存放公共部分，同一类别独自一文件，可以是表示结构的，也可以是表示主题的，唯独表示页面具体逻辑的部分，不能放在该目录下。
-* 业务模块则指具体页面对应的 CSS 文件。一个页面单独对应一个 CSS 文件。通过 <code>@import</code> 引入相关的通用模块子文件及需要更细粒度拆分的 CSS 文件。</p>
+<p>首先，目录划分。将 CSS 分为两类，通用模块和业务模块，可以适当地分为多个小文件。</p>
+
+<ul>
+<li>通用模块中存放公共部分，同一类别独自一文件，可以是表示结构的，也可以是表示主题的，唯独表示页面具体逻辑的部分，不能放在该目录下。</li>
+<li>业务模块则指具体页面对应的 CSS 文件。一个页面单独对应一个 CSS 文件。通过 <code>@import</code> 引入相关的通用模块子文件及需要更细粒度拆分的 CSS 文件。</li>
+</ul>
 
 <p>如下图所示，<code>common</code> 中存在的为共用部分文件，而 <code>page</code> 下则具体对应到指定的页面。<code>Demo/style.css</code> 为对应 <code>Demo</code> 页面中的 CSS 文件。其中 <code>style.css</code> 可能还 <code>@import</code> 了 <code>common/form.css</code>，<code>common/btn.css</code> 以及 <code>Demo/css</code> 目录下的文件。</p>
 
@@ -249,9 +251,9 @@ var duoshuoQuery = {short_name:"j4evee"};
       
       <a href="http://jyu213.github.io/tags/doc" class="list-group-item">doc</a>
       
-      <a href="http://jyu213.github.io/tags/css" class="list-group-item">css</a>
-      
       <a href="http://jyu213.github.io/tags/es6" class="list-group-item">es6</a>
+      
+      <a href="http://jyu213.github.io/tags/css" class="list-group-item">css</a>
       
       <a href="http://jyu213.github.io/tags/git" class="list-group-item">git</a>
       
