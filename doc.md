@@ -4,8 +4,14 @@
 
 ## TODO: 补充安装信息
 
-新建文章:
+### 新建文章:
 'hugo new path/filename.md'
+
+### 启动服务
+
+'''shell
+hugo server --theme=beg --buildDrafts --watch
+'''
 
 [参数配置说明](http://www.gohugo.io/overview/configuration/)
 
