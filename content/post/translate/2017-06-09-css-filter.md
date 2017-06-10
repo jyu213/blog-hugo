@@ -51,7 +51,7 @@ grayscale() = grayscale( [ <number> | <percentage> ] )
 
 原始图像包含很多灰色，但我认为你可以看到滤镜的效果，因为现在所有的颜色都已被删除。
 
-![img2](http://www.vanseodesign.com/blog/wp-content/uploads/2013/09/strawberry-fields.jpg)
+<img src="http://www.vanseodesign.com/blog/wp-content/uploads/2013/09/strawberry-fields.jpg" alt="img2" style="filter: grayscale(1);">
 
 为了比较矩阵和 `filter-function`，公平起见，通过将 `type` 属性设置为 `saturate` 来使 `feColorMatrix` 更轻松地删除颜色。看如下部分代码：
 
@@ -85,7 +85,7 @@ hue-rotate() = hue-rotate( <angle> )
 
 该值将红色和黄色的花朵变成含有更多粉色，紫色和蓝色的花朵。
 
-![img3](http://www.vanseodesign.com/blog/wp-content/uploads/2013/09/strawberry-fields.jpg)
+<img src="http://www.vanseodesign.com/blog/wp-content/uploads/2013/09/strawberry-fields.jpg" alt="img3" style="filter: hue-rotate(225deg);">
 
 以下是 SVG `filter` 的对比。CSS 依旧更简单。不过这种情况并不多。
 
@@ -114,11 +114,11 @@ saturate() = saturate( [ <number> | <percentage> ] )
 
 返回图片如下。
 
-![img4](http://www.vanseodesign.com/blog/wp-content/uploads/2013/09/strawberry-fields.jpg)
+<img src="http://www.vanseodesign.com/blog/wp-content/uploads/2013/09/strawberry-fields.jpg" alt="img4" style="filter: saturate(0.5);">
 
 不允许使用负值，但是你可以提供大于 100% 或 1.0 的值。使得元素超饱和、再次使用 900% 饱和度的图像（ `filter:saturate(9);`）。
 
-![img5](http://www.vanseodesign.com/blog/wp-content/uploads/2013/09/strawberry-fields.jpg)
+<img src="http://www.vanseodesign.com/blog/wp-content/uploads/2013/09/strawberry-fields.jpg" alt="img5" style="filter: saturate(9);">
 
 如同 `saturate()`，相应的 SVG `filter` 是比较简单的。
 
@@ -151,7 +151,7 @@ sepia() = sepia( [ <number> | <percentage> ] )
 
 图片如下：
 
-![img6](http://www.vanseodesign.com/blog/wp-content/uploads/2013/09/strawberry-fields.jpg)
+<img src="http://www.vanseodesign.com/blog/wp-content/uploads/2013/09/strawberry-fields.jpg" alt="img6" style="filter: sepia(75%);">
 
 对于没有 `sepia`  类型的 `feColorMatrix`，所有想要获得与使用另一个矩阵的深褐色效果。
 

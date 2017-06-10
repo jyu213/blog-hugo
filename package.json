@@ -1,0 +1,20 @@
+{
+  "name": "blog-hugo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "sh deploy.sh",
+    "server": "hugo server --theme=beg --buildDrafts --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jyu213/blog-hugo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jyu213/blog-hugo/issues"
+  },
+  "homepage": "https://github.com/jyu213/blog-hugo#readme"
+}
