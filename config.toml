@@ -1,14 +1,15 @@
 baseurl = "http://jyu213.github.io/"
-title = "见见 - 前端小记"
-theme = "beg"
+title = "前端杂货铺"
+theme = "elves"
 hasCJKLanguage = true
 
 [params]
     Author = "见见"
+    ## Logo = "/images/ava.jpeg"
     DateForm = "2006-01-02"
+    Comments = true
     GoogleAnalyticsUserID = "UA-41493088-2"
     ShowRelatedPost = false
-    Duoshuo = "j4evee"
     SyntaxHighlightTheme = "solarized_dark.min.css"
     CopyrightHTML = ""
 
@@ -18,10 +19,15 @@ hasCJKLanguage = true
 [permalinks]
     post = "/blog/:year/:month/:day/:slug/"
 
-
-# [[menu.main]]
-#     name = "section1"
-#     url = "/blog/"
-# [[menu.main]]
-#     name = "section2"
-#     url = "/blog2/"
+[[menu.main]]
+    name = "翻译"
+    url = "/categories/translate"
+[[menu.main]]
+    name = "JS"
+    url = "/categories/js"
+[[menu.main]]
+    name = "CSS"
+    url = "/categories/css"
+[[menu.main]]
+    name = "首页"
+    url = "/"

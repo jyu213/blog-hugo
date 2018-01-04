@@ -17,3 +17,8 @@ article.single .article-header time{
     display: inline-block;
     line-height: normal;
 }
+
+.comments {
+    max-width: 700px;
+    margin: 0 auto;
+}

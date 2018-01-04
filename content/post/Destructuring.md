@@ -1,6 +1,7 @@
 +++
 title = "ES6 - 解构赋值"
 date = "2015-12-14"
+categories = ["js"]
 tags = ["es6"]
 +++
 

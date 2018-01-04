@@ -2,7 +2,7 @@
 layout = "post"
 title = "React 组件化之路"
 date = "2014-04-12"
-categories = ["article"]
+categories = ["js"]
 tags = ["doc"]
 draft = true
 +++

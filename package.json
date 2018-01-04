@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "deploy": "sh deploy.sh",
-    "server": "hugo server --theme=beg --buildDrafts --watch"
+    "server": "hugo server --theme=elves --buildDrafts --watch"
   },
   "repository": {
     "type": "git",

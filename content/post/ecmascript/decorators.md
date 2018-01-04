@@ -1,8 +1,8 @@
 +++
-categories = ["一起学 ES6"]
+categories = ["js"]
 date = "2017-06-18T22:10:05+08:00"
 description = ""
-tags = []
+tags = ["es6"]
 title = "ES7 Decorators"
 
 +++

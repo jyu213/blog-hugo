@@ -1,5 +1,5 @@
 +++
-categories = ["translate", "css"]
+categories = ["translate"]
 date = "2017-05-10T22:34:58+08:00"
 description = ""
 tags = ["translate", "css"]

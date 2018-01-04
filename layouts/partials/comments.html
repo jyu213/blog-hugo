@@ -1,14 +1,23 @@
-{{ if .Site.Params.Duoshuo }}
-<div class="ds-thread" data-thread-key="{{ .Permalink }}" data-title="{{ .Title }}" data-url="{{ .Permalink }}"></div>
+{{ if .Site.Params.Comments }}
+<!-- thx. https://github.com/imsun/gitment -->
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+
+
+<div id="comments" class="comments" data-thread-key="{{ .Permalink }}" data-title="{{ .Title }}" data-url="{{ .Permalink }}"></div>
 <script type="text/javascript">
-var duoshuoQuery = {short_name:"{{ .Site.Params.Duoshuo }}"};
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0]
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-    </script>
+    const gitment = new Gitment({
+      id: '{{ .Permalink }}',
+      title: '{{ .Title }}',
+      owner: 'jyu213',
+      repo: 'blog_comments',
+      oauth: {
+        client_id: '3bee402f3d2d77bfe52a',
+        client_secret: 'a03e8940e2210e7990ad0ad89f6eb1259b1facb6',
+      },
+    })
+
+    gitment.render('comments')
+</script>
+
 {{ end }}

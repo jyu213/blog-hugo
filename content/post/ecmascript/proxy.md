@@ -1,5 +1,5 @@
 +++
-categories = ['es6']
+categories = ['js']
 date = "2017-09-28T00:47:14+08:00"
 description = ""
 tags = ['es6']

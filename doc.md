@@ -10,7 +10,7 @@
 ### 启动服务
 
 '''shell
-hugo server --theme=beg --buildDrafts --watch
+hugo server --theme=elves --buildDrafts --watch
 '''
 
 [参数配置说明](http://www.gohugo.io/overview/configuration/)

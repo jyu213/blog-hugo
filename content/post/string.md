@@ -1,6 +1,7 @@
 +++
 title = "ES6 - 字符串模板"
 date = "2015-12-14"
+categories = ["js"]
 tags = ["es6"]
 +++
 
