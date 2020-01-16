@@ -7,7 +7,7 @@ sh deploy.sh
 '''
 
 ### 新建文章:
-'hugo new post/date-filename.md'
+'hugo new post/filename.md'
 
 ### 启动服务
 
